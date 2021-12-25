@@ -14,12 +14,12 @@
 
 
  ; RAM =====================================================================================================
- .DSEG                                                                                      ;    Сегмент ОЗУ
+ .DSEG                                                                                      ;    Г‘ГҐГЈГ¬ГҐГ­ГІ ГЋГ‡Г“
 
 
 
  ; FLASH ===================================================================================================
- .CSEG                                                                                      ;   Сегмент кода
+ .CSEG                                                                                      ;   Г‘ГҐГЈГ¬ГҐГ­ГІ ГЄГ®Г¤Г 
 	.ORG $000        ; (RESET) 
 		JMP   Reset
 	.ORG $002
@@ -62,16 +62,16 @@
 		RETI             ; (TIMER0 COMP) Timer/Counter0 Compare Match
 	.ORG $028
 		RETI             ; (SPM_RDY) Store Program Memory Ready
-	.ORG   INT_VECTORS_SIZE      	; Конец таблицы прерываний
+	.ORG   INT_VECTORS_SIZE      	; ГЉГ®Г­ГҐГ¶ ГІГ ГЎГ«ГЁГ¶Г» ГЇГ°ГҐГ°Г»ГўГ Г­ГЁГ©
 
 
 	Reset:
-		LDI R16,Low(RAMEND)	; Инициализация стека
+		LDI R16,Low(RAMEND)	; Stack init
 		OUT SPL,R16
 		LDI R16,High(RAMEND)
 		OUT SPH,R16
 
-		SEI ; Разрешаем прерывания
+		SEI ; Р Р°Р·СЂРµС€РёР»Рё РіР»РѕР±Р°Р»СЊРЅС‹Рµ РїСЂРµСЂС‹РІР°РЅРёСЏ
 
 		JMP Setup
 
@@ -103,3 +103,4 @@
 			brne L1
 			dec  r18
 			brne L1
+                        ret
